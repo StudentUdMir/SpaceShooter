@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+ 
 public class Item : MonoBehaviour
 {
+ 
     public GameObject pickupEffect;
-    void OnTriggerEnter2D(Collider2D collision)
+ 
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            //Player player = collision.GetComponent<Player>();
             Player player = collision.GetComponent<Player>();
             player.points++;
             GameObject effect = Instantiate(pickupEffect, transform.position, transform.rotation);
@@ -17,5 +18,4 @@ public class Item : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
 }
